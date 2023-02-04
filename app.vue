@@ -1,12 +1,9 @@
-<script setup>
-const runtime = useRuntimeConfig();
-console.log(runtime);
-</script>
+<script setup></script>
 
 <template>
-  <div>
-    <code>
-      <pre>{{ runtime }}</pre>
-    </code>
-  </div>
+  <main class="h-screen">
+    <div class="flex p6 justify-center mt-10 text-primary">
+      <NuxtLink to="/_tailwind/" target="_blank">Go To Tailwind</NuxtLink>
+    </div>
+  </main>
 </template>
