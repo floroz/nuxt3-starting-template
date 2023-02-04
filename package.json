@@ -1,14 +1,20 @@
 {
   "name": "nuxt3-starting-template",
   "author": {
-    
-  }, 
+    "name": "Daniele Tortora",
+    "email": "contact@danieletortora.com"
+  },
+  "repository": {
+    "url": "https://github.com/floroz/nuxt3-starting-template"
+  },
+  "license": "MIT",
   "private": true,
   "scripts": {
-    "lint:eslint": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
+    "lint:eslint": "eslint --ext \".ts,.js,.tsx,.vue\"",
     "lint:prettier": "prettier --check .",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "lint:fix": "prettier --write --list-different . && yarn lint:eslint --fix",
+    "test": "vitest",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -16,15 +22,21 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^3.1.2",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/tailwindcss": "^6.3.1",
     "@typescript-eslint/parser": "^5.50.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/test-utils": "^2.2.10",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vitest": "^0.0.32",
+    "jsdom": "^21.1.0",
     "nuxt": "^3.1.2",
     "prettier": "^2.8.3",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vitest": "^0.28.4"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.6"
