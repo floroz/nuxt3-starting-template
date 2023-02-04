@@ -1,4 +1,8 @@
 {
+  "name": "nuxt3-starting-template",
+  "author": {
+    
+  }, 
   "private": true,
   "scripts": {
     "lint:eslint": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
@@ -21,5 +25,8 @@
     "nuxt": "^3.1.2",
     "prettier": "^2.8.3",
     "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.6"
   }
 }
