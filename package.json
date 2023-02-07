@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "private": true,
+  "type": "module",
   "scripts": {
     "lint:eslint": "eslint --ext \".ts,.js,.tsx,.vue\"",
     "lint:prettier": "prettier --check .",

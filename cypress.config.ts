@@ -1,9 +1,34 @@
-import { defineConfig } from "cypress";
 import { loadNuxt, buildNuxt } from "@nuxt/kit";
+import { defineConfig } from "cypress";
 
-export async function getViteConfig() {
-  const nuxt = await loadNuxt({ configFile: "./nuxt.config.ts" });
-  console.log("loaded nuxt");
+export default defineConfig({
+  e2e: {
+    setupNodeEvents(_on, _config) {
+      // implement node event listeners here
+    },
+    baseUrl: "http://localhost:3000",
+  },
+  component: {
+    devServer: {
+      framework: "vue",
+      bundler: "vite",
+      viteConfig: async () => {
+        const config = await getViteConfig();
+        console.log("log:loaded viteconfig");
+        return {
+          ...config,
+          server: {
+            middlewareMode: false,
+          },
+        };
+      },
+    },
+  },
+});
+
+async function getViteConfig() {
+  const nuxt = await loadNuxt({ dev: false, cwd: process.cwd() });
+  console.log("log:loaded nuxt instance");
 
   return new Promise((resolve, reject) => {
     nuxt.hook("vite:extendConfig", (config) => {
@@ -15,29 +40,7 @@ export async function getViteConfig() {
         reject(err);
       }
     });
-  }).finally(() => nuxt.close());
+  }).finally(() => {
+    nuxt.close();
+  });
 }
-
-export default defineConfig({
-  e2e: {
-    setupNodeEvents(_on, _config) {
-      // implement node event listeners here
-    },
-    baseUrl: "http://localhost:3000",
-  },
-
-  component: {
-    devServer: {
-      framework: "vue",
-      bundler: "vite",
-      viteConfig: async () => {
-        console.log("viteconfig");
-        const config = await getViteConfig();
-
-        console.log(config);
-
-        return {};
-      },
-    },
-  },
-});
